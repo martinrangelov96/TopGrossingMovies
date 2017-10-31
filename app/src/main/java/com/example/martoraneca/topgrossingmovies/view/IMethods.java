@@ -1,4 +1,4 @@
-package com.example.martoraneca.topgrossingmovies;
+package com.example.martoraneca.topgrossingmovies.view;
 
 /**
  * Created by martoraneca on 31-Oct-17.

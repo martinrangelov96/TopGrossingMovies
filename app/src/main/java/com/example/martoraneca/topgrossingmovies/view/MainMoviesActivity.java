@@ -1,4 +1,4 @@
-package com.example.martoraneca.topgrossingmovies;
+package com.example.martoraneca.topgrossingmovies.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.martoraneca.topgrossingmovies.R;
+import com.example.martoraneca.topgrossingmovies.data.Data;
 
 import static com.example.martoraneca.topgrossingmovies.R.drawable.downtown_only_arrow_trans;
 

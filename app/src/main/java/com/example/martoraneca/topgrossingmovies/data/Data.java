@@ -1,6 +1,8 @@
-package com.example.martoraneca.topgrossingmovies;
+package com.example.martoraneca.topgrossingmovies.data;
 
-class Data {
+import com.example.martoraneca.topgrossingmovies.R;
+
+public class Data {
 
     private static String[] moviesNames = new String[] {
             "Beauty and the Beast", "Frozen", "Harry Potter and the Deathly Hallows: Part II",
@@ -47,27 +49,27 @@ class Data {
             "http://www.imdb.com/title/tt0120338/?ref_=nv_sr_1", "http://www.imdb.com/title/tt0499549/?ref_=nv_sr_2"
     };
 
-    static String[] getMoviesNames() {
+    static public String[] getMoviesNames() {
         return moviesNames;
     }
 
-    static String[] getMoviesYears() {
+    static public String[] getMoviesYears() {
         return moviesYears;
     }
 
-    static String[] getMoviesBoxOffices() {
+    static public String[] getMoviesBoxOffices() {
         return moviesBoxOffices;
     }
 
-    static int[] getMoviesPosters() {
+    static public int[] getMoviesPosters() {
         return moviesPosters;
     }
 
-    static String[] getPlace() {
+    static public String[] getPlace() {
         return place;
     }
 
-    static String[] getImdbLinks() {
+    static public String[] getImdbLinks() {
         return imdbLinks;
     }
 }
