@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import static com.example.martoraneca.topgrossingmovies.R.drawable.downtown_only_arrow_trans;
 
-public class MainMoviesActivity extends AppCompatActivity {
+public class MainMoviesActivity extends AppCompatActivity implements IMethods {
 
     private TextView mMovieName;
     private TextView mMovieYear;
@@ -40,20 +40,18 @@ public class MainMoviesActivity extends AppCompatActivity {
         ImageView mImdbLogo = (ImageView) findViewById(R.id.imdbLogo);
         TextView mMoreInfo = (TextView) findViewById(R.id.moreInfo);
 
-        mMoreInfo.setCompoundDrawablesWithIntrinsicBounds(0,0,0,downtown_only_arrow_trans);
+        mMoreInfo.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, downtown_only_arrow_trans);
 
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
 
         updateMovie();
-
-
 
         mImdbLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainMoviesActivity.this);
                 alert.setTitle("Are you sure?");
-                alert.setMessage("Do you want to go to 'www.imdb.com' to see more information about the movie?");
+                alert.setMessage("Do you want to open 'www.imdb.com' or IMDb Android Application (if you have it on your device) to see more information about the movie?");
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -76,22 +74,20 @@ public class MainMoviesActivity extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-    private class LearnGesture extends GestureDetector.SimpleOnGestureListener{
+    private class LearnGesture extends GestureDetector.SimpleOnGestureListener {
 
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-
-            if(event2.getX() < event1.getX()) {
-                if(Data.getMoviesNames().length-1 > counter){
+            //right-to-left gesture
+            if (event2.getX() < event1.getX()) {
+                if (Data.getMoviesNames().length - 1 > counter) {
                     counter++;
                     updateMovie();
                 }
-            }
-
-            else
-            if(event2.getX() > event1.getX()){
-                if(counter >0){
+            //left-to-right gesture
+            } else if (event2.getX() > event1.getX()) {
+                if (counter > 0) {
                     counter--;
                     updateMovie();
                 }
@@ -101,11 +97,13 @@ public class MainMoviesActivity extends AppCompatActivity {
 
     }
 
-    private void updateMovie() {
+    @Override
+    public void updateMovie() {
         mMovieName.setText(Data.getMoviesNames()[counter]);
         mMovieYear.setText(Data.getMoviesYears()[counter]);
         mMoviePoster.setImageResource(Data.getMoviesPosters()[counter]);
         mMovieGross.setText(Data.getMoviesBoxOffices()[counter]);
         mPlace.setText(Data.getPlace()[counter]);
     }
+
 }
